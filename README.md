@@ -13,3 +13,8 @@ python3 train.py \
     --plot_decision_plane dp.png \   # path to save decision plane of model
     --save_metrics metrics.txt       # path to save model metrics
 ```
+
+
+## How to run using actions
+
+Just create pull request on branch master.
