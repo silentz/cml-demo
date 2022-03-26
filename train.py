@@ -55,7 +55,7 @@ def save_metrics(X: np.ndarray, y: np.ndarray,
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--random_seed', type=int, default=42)
+    parser.add_argument('--random_seed', type=int, default=43)
     parser.add_argument('--plot_dataset', type=str, default=None)
     parser.add_argument('--plot_decision_plane', type=str, default=None)
     parser.add_argument('--save_metrics', type=str, default=None)
