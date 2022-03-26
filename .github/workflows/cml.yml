@@ -1,0 +1,28 @@
+name: simple dimple
+
+on: [push]
+
+jobs:
+  runcml:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: iterative/setup-cml@v1
+
+      - name: Train model
+        run: |
+          pip3 install -r requirements.txt
+          python3 train.py \
+              --plot_dataset dataset.png \
+              --plot_decision_plane dp.png \
+              --save_metrics metrics.txt
+
+      - name: Create report
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cat metrics.txt >> report.md
+          cml-publish dataset.png --md >> report.md
+          cml-publish dp.png --md >> report.md
+          cml-send-comment report.md
